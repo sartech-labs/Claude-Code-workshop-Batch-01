@@ -36,20 +36,20 @@ Claude-Code-workshop-Batch-01/
 
 ## Key Files Explained
 
-### `.claude/settings.local.json`
+### [`file_guide_book.md`](file_guide_book.md)
+A broader guide explaining the purpose of each file and the design rationale (why two safety layers instead of one).
+
+### [`.claude/settings.local.json`](.claude/settings.local.json)
 The live configuration file Claude Code actually reads. Defines:
 - A `PreToolUse` hook that runs `block-rm.js` before every Bash command
 - An **allow** list (Supabase read operations, `git add`, `git commit`) — no prompt needed
 - A **deny** list (`rm`, `Remove-Item`, `del`, `rmdir`) — permanently blocked
 
-### `.claude/hooks/block-rm.js`
-A Node.js script that receives every pending Bash command over stdin (as JSON), checks it against a list of destructive-delete patterns, and exits with code `2` to block or `0` to allow.
-
-### `.claude/settings.local.md`
+### [`.claude/settings.local.md`](.claude/settings.local.md)
 A human-readable, line-by-line walkthrough of `settings.local.json` — because JSON doesn't support comments.
 
-### `file_guide_book.md`
-A broader guide explaining the purpose of each file and the design rationale (why two safety layers instead of one).
+### [`.claude/hooks/block-rm.js`](.claude/hooks/block-rm.js)
+A Node.js script that receives every pending Bash command over stdin (as JSON), checks it against a list of destructive-delete patterns, and exits with code `2` to block or `0` to allow.
 
 ---
 
